@@ -15,6 +15,7 @@ export class WriteComponent {
   readonly tokens = computed(() => {
     const value = this.value();
     return value.split('').map((char: string) => {
+      char = char.toUpperCase();
       if (letters.includes(char as any)) {
         return { char, uri: this.symbols.getLetterImageUri(char) };
       } else if (char === ' ') {
