@@ -1,4 +1,4 @@
-<h1 class="text-2xl/7 font-500 flex align-center gap-2">
+<h1 class="text-2xl/7 font-500 flex items-center gap-2 mb-4">
   <a class="btn btn-circle btn-sm mr-1" routerLink="/capture">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,5 +14,10 @@
   </a>
   Editing letter <span class="text-secondary">{{ letter() }}</span>
 </h1>
+<p class="mb-4">
+  Draw the symbol you'd like to use for
+  <span class="text-secondary">{{ letter() }}</span
+  >.
+</p>
 
 <cus-char-edit [uri]="uri" (save)="saveImage($event)"></cus-char-edit>

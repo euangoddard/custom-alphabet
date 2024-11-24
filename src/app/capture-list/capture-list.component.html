@@ -1,4 +1,12 @@
 <h1 class="text-2xl/7 font-500 mb-4">Capture your alphabet</h1>
+<p class="mb-2">
+  Create your own alphabet by editing each letter and drawing the symbol you'd
+  like to use for it.
+</p>
+<p class="mb-4">
+  When you have the full alphabet, you can use it to
+  <a routerLink="/write" class="link">write messages</a>!
+</p>
 <div class="overflow-x-auto">
   <table class="table table-zebra">
     <thead>
@@ -10,7 +18,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of letterData">
-        <td>{{ data.letter }}</td>
+        <td>
+          <a class="link" [routerLink]="[data.letter]">{{ data.letter }}</a>
+        </td>
         <td>
           @if (data.uri) {
           <img [src]="data.uri" alt="{{ data.letter }}" class="w-16" />
