@@ -1,0 +1,22 @@
+<div class="container mx-auto max-w-[240px]">
+  <div class="shadow shadow-lg shadow-base-300 mb-4">
+    <canvas
+      #capture
+      width="240"
+      height="240"
+      (pointerdown)="startCapture($event)"
+      (pointerleave)="stopCapture()"
+      (pointercancel)="stopCapture()"
+      (pointerup)="stopCapture()"
+      (pointermove)="moveOnCanvas($event)"
+    ></canvas>
+  </div>
+  <div class="flex gap-2">
+    <button class="btn btn-outline btn-secondary grow" (click)="clear()">
+      Clear
+    </button>
+    <button class="btn btn-primary grow" (click)="saveCanvasData()">
+      Save
+    </button>
+  </div>
+</div>

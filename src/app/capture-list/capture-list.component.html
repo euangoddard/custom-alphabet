@@ -1,0 +1,29 @@
+<h1 class="text-2xl/7 font-500 mb-4">Capture your alphabet</h1>
+<div class="overflow-x-auto">
+  <table class="table table-zebra">
+    <thead>
+      <tr>
+        <th>Letter</th>
+        <th>Character</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of letterData">
+        <td>{{ data.letter }}</td>
+        <td>
+          @if (data.uri) {
+          <img [src]="data.uri" alt="{{ data.letter }}" class="w-16" />
+          } @else {
+          <span class="text-neutral">&ndash;</span>
+          }
+        </td>
+        <td>
+          <a class="btn btn-neutral btn-xs" [routerLink]="[data.letter]"
+            >Edit</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
