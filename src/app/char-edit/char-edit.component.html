@@ -4,11 +4,14 @@
       #capture
       width="240"
       height="240"
-      (pointerdown)="startCapture($event)"
-      (pointerleave)="stopCapture()"
-      (pointercancel)="stopCapture()"
-      (pointerup)="stopCapture()"
-      (pointermove)="moveOnCanvas($event)"
+      (mousedown)="startCapture($event)"
+      (mousemove)="moveOnCanvas($event)"
+      (mouseup)="stopCapture()"
+      (mouseleave)="stopCapture()"
+      (touchcancel)="stopCapture()"
+      (touchstart)="startCapture($event)"
+      (touchmove)="moveOnCanvas($event)"
+      (touchend)="stopCapture()"
     ></canvas>
   </div>
   <div class="flex gap-2">

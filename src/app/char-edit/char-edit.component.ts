@@ -37,7 +37,8 @@ export class CharEditComponent implements OnInit {
     }
   }
 
-  startCapture(event: MouseEvent): void {
+  startCapture(event: MouseEvent | TouchEvent): void {
+    event.preventDefault();
     this.isCapturing.set(true);
     const { context, canvas } = this.getCanvasAndContext();
     const { x, y } = this.getCanvasRelXY(event, canvas);
@@ -49,8 +50,9 @@ export class CharEditComponent implements OnInit {
     this.isCapturing.set(false);
   }
 
-  moveOnCanvas(event: MouseEvent): void {
+  moveOnCanvas(event: MouseEvent | TouchEvent): void {
     if (this.isCapturing()) {
+      event.preventDefault();
       const { context, canvas } = this.getCanvasAndContext();
       const { x, y } = this.getCanvasRelXY(event, canvas);
       context.lineWidth = 10;
@@ -76,11 +78,17 @@ export class CharEditComponent implements OnInit {
   }
 
   private getCanvasRelXY(
-    event: MouseEvent,
+    event: MouseEvent | TouchEvent,
     canvas: HTMLCanvasElement
   ): { x: number; y: number } {
     const rect = canvas.getBoundingClientRect();
-    return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    let touch: Touch | MouseEvent;
+    if ('changedTouches' in event) {
+      touch = event.changedTouches[0];
+    } else {
+      touch = event;
+    }
+    return { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
   }
 }
 
